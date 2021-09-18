@@ -81,7 +81,8 @@ CREATE TABLE tb_livro (
     lvr_part_local TEXT NULL,
     lvr_ativo BOOLEAN NOT NULL DEFAULT FALSE,
     CONSTRAINT tb_livro_lvr_id_pk PRIMARY KEY (lvr_id),
-    CONSTRAINT tb_livro_lvr_gen_id_fk FOREIGN KEY (lvr_gen_id) REFERENCES tb_genero(gen_id)
+    CONSTRAINT tb_livro_lvr_gen_id_fk FOREIGN KEY (lvr_gen_id) REFERENCES tb_genero(gen_id),
+    CONSTRAINT tb_livro_lvr_par_id_fk FOREIGN KEY (lvr_par_id) REFERENCES tb_parteleira(par_id)
 );
 
 CREATE TABLE tb_emprestimo (
