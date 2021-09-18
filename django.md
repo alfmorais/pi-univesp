@@ -61,3 +61,7 @@ pip install django
 8. []()
 9. []()
 10.[]()
+
+~~~python
+print("hello world!")
+~~~
