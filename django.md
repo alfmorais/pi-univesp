@@ -82,7 +82,9 @@ python manage.py createsuperuser
 ~~~
 
 nome:
+
 e-mail:
+
 senha: 
 
 Digite seu usário e senha e não se esqueça destas credenciais, vamos utilizar mais adiante
@@ -109,8 +111,8 @@ python manage.py runserver
 
 _imagem_
 
-## 8° Definindo a View "Home"
-## 9° Configurando Front-End com o Back-End
+## 8° Fazendo a migração do banco legado no Django
+## 9° Configurando a view da tela inicial
 ## 10° Inserindo o usuário na tela de Login
 ## 11° Após o login: Tela do Sistema!
 ## 12°
