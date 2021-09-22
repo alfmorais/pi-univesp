@@ -81,11 +81,8 @@ Com o comando abaixo criaremos nosso usuário para usar a área administrativa:
 python manage.py createsuperuser
 ~~~
 
-nome:
-
-e-mail:
-
-senha: 
+nome: univesp
+senha: univesp2021
 
 Digite seu usário e senha e não se esqueça destas credenciais, vamos utilizar mais adiante
 
@@ -106,7 +103,7 @@ python manage.py runserver
 ~~~
 
 1. Clica no link de Localhost
-2. Vai até a URL do Google Chrome que abriu e digite o seguinte endereço: <b>http://localhost:8080/admin</b>
+2. Vai até a URL do Google Chrome que abriu e digite o seguinte endereço: <b>http://127.0.0.1:8000/admin</b>
 3. Insira o usuário e a senha definido no passo 5. 
 
 _imagem_
