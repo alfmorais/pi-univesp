@@ -3138,7 +3138,7 @@
     font-family: Montserrat-Regular;
     font-size: 15px;
     line-height: 1.4;
-    color: #059999;
+    color: #03989E;
   }
   
   .txt2 {
@@ -3212,7 +3212,7 @@
     background-size: cover;
     background-position: center;
     position: relative;
-    border-right: 5px solid #059999;
+    border-right: 5px solid #03989E;
     z-index: 1;
   }
   
@@ -3241,10 +3241,10 @@
     min-height: 100vh;
     display: block;
     background-color: #f7f7f7;
-    border-right: 5px solid #059999;
+    border-right: 5px solid #03989E;
   }
   .login100-form-top {
-    background-color: #059999;
+    background-color: #03989E;
   }
   
   .login100-form-title {
@@ -3463,7 +3463,7 @@
     width: 100%;
     height: 50px;
     border-radius: 10px;
-    background:#059999;
+    background:#03989E;
     font-family: Montserrat-Bold;
     font-size:15px;
     color: #fff;
