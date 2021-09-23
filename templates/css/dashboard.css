@@ -3070,8 +3070,9 @@
   ul, li {
       margin: 0px;
       list-style-type: none;
+      padding: 5px 15px;
+      padding-top: 15px;
   }
-  
   
   /*---------------------------------------------*/
   input {
@@ -3601,7 +3602,34 @@
     background: #333333;
     color: #fff;
   }
-  
+  .logo {
+    width: 90px;
+  }
+  .menu{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+  }
+  .menu-div{
+    width: 150px;
+    min-height: 100vh;
+    display: block;
+    background-color: #03989e8f;
+    border-right: 5px solid #03989e8f;
+  }
+  .home100-more {
+    width: calc(100% - 150px);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    border-right: 5px solid #03989e8f;
+    z-index: 1;
+}
 
 
 
