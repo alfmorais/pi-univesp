@@ -384,7 +384,7 @@ python manage.py makemigrations
 ## Referências
 1. [Documentação do Django](https://docs.djangoproject.com/pt-br/3.2/)
 2. [Integrando Django com PostgreSQL ( Windows e Linux )](https://www.horadecodar.com.br/2019/01/24/integrando-django-com-postegresql-windows-e-linux/)
-3. []()
+3. [Integrating Django with a legacy database](https://docs.djangoproject.com/en/3.2/howto/legacy-databases/)
 4. []()
 5. []()
 6. []()
