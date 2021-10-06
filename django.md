@@ -25,7 +25,7 @@ library/Scripts/Activate
 
 A palavra library vai aparecer na frente da sua linha de comando entre-parenteses. conforme exemplo abaixo:
 
-![Text Alt](files/venv.png)
+![Text Alt](venv.png)
 
 ## 2° Instalando o Django e o PostgreSQL
 
@@ -57,7 +57,7 @@ python manage.py runserver
 
 O código acima irá iniciar o servidor localhost do Django, conforme imagem abaixo:
 
-![Text Alt](files/runserver.png)
+![Text Alt](runserver.png)
 
 ## 4° Configurando o PostgreSQL no Django
 
@@ -113,7 +113,7 @@ python manage.py runserver
 
 A imagem abaixo é um exemplo do painel administrativo do Django:
 
-![Text Alt](files/take5_Imagem5.png)
+![Text Alt](take5_Imagem5.png)
 
 ## 8° Fazendo a migração do banco legado no Django
 
