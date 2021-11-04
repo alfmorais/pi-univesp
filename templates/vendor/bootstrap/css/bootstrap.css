@@ -1553,7 +1553,7 @@ pre code {
   padding: 0.5rem 0.75rem;
   font-size: 1rem;
   line-height: 1.25;
-  color: #495057;
+  color: #03989e8f;
   background-color: #fff;
   background-image: none;
   background-clip: padding-box;
@@ -1568,14 +1568,14 @@ pre code {
 }
 
 .form-control:focus {
-  color: #495057;
+  color: #03989e8f;
   background-color: #fff;
   border-color: #80bdff;
   outline: none;
 }
 
 .form-control::-webkit-input-placeholder {
-  color: #868e96;
+  color: #03989e8f;
   opacity: 1;
 }
 
@@ -1599,7 +1599,7 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 select.form-control:focus::-ms-value {
-  color: #495057;
+  color: #03989e8f;
   background-color: #fff;
 }
 
@@ -3113,7 +3113,7 @@ tbody.collapse.show {
   height: 2.5rem;
   padding: 0.5rem 1rem;
   line-height: 1.5;
-  color: #495057;
+  color: #03989e8f;
   pointer-events: none;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -8182,4 +8182,3 @@ a.text-dark:focus, a.text-dark:hover {
 .invisible {
   visibility: hidden !important;
 }
-/*# sourceMappingURL=bootstrap.css.map */
