@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load filtros %}
+
+{% block 'head' %} 
+{% endblock %}
+
+{% block 'titulo' %}Descrição{% endblock %}
+
+{% block 'body' %}
+    <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="Modal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Deseja mesmo excluir o registro do Livro?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <a href="{% url 'excluir' id_livro %}" class="btn btn-danger btn-lg">Excluir</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <form>
+            <br>
+            <p>
+                <label>Nome do Livro:</label>
+                <input class="form-control" type="text" value="{{livro.titulo}}">
+            </p>
+            <p>
+                <label>Nome do Autor:</label>
+                <input class="form-control" type="text" value="{{livro.autor}}">
+            </p>
+            <p>
+                <label>Nome do Co-Autor:</label>
+                <input class="form-control" type="text" value="{{livro.co_autor}}">
+            </p>
+            <p>
+                <label>Editora:</label>
+                <input class="form-control" type="text" value="{{livro.editora}}">
+            </p>
+            <p>
+                <label>Data de Cadastro</label>
+                <input class="form-control" type="text" value="{{livro.data_cadastro}}">
+            </p>
+            <p>
+                <label>Emprestado</label>
+                {% if livro.emprestado == True %}
+                    <input class="form-control" type="text" value="Livro está emprestado">
+                {% else %}
+                    <input class="form-control" type="text" value="Livro disponivel para emprestimo">
+                {% endif %}
+            </p>
+            <p>
+                <label>Quantidade</label>
+                <input class="form-control" type="text" value="{{livro.quantidade}}">
+            </p>
+            <p>
+                <label>Patrimonio</label>
+                <input class="form-control" type="text" value="{{livro.partimonio}}">
+            </p>
+            <p>
+                <label>Ativo</label>
+                {% if livro.ativo == True %}
+                    <input class="form-control" type="text" value="Livro Disponivel">
+                {% else %}
+                    <input class="form-control" type="text" value="Livro Não Disponivel">
+                {% endif %}
+            </p>
+            <p>
+                <label>Categoria</label>
+                <select class="form-control" name="categorias">
+                    {% for i in categorias %}
+                        {% if livro.categoria.nome == i.nome %}
+                            <option selected>{{i}}</option>
+                        {% else %}
+                            <option>{{i}}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </p>
+            <p>
+                <label>Usuário</label>
+                <input class="form-control" type="text" value="{{livro.usuarios}}">
+            </p>
+            <input type="submit" class="btn btn-success btn-lg" value="Salvar">
+        </form>
+        <br>
+        <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#Modal">
+            Excluir Livro
+        </button>
+        <br>
+        <br>
+        <h2>Histórico de Emprestimo</h2>
+        <br>
+        <br>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Data Inicial</th>
+                    <th scope="col">Data Final</th>
+                    <th scope="col">Tempo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in emprestimo %}
+                <tr>
+                    <td>{{i.nome_emprestado}}</td>
+                    <td>{{i.data_emprestimo}}</td>
+                    <td>{{i.data_devolucao}}</td>
+                    <td>{{i.data_devolucao|duracao:i.data_emprestimo}} dias</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
