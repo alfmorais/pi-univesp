@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="pt-BR">
     <head>
@@ -5,18 +6,18 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="../Font-End/templades/css/dashboard.css">
-        {% block 'head' %} {% endblock %}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">  
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+        {% block 'head' %} {% endblock %}{% load static %}
         <title>{% block 'titulo' %} {% endblock %}</title>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="{% url 'home' %}">Biblioteca</a>
+            <a class="navbar-brand" href="{% url 'home' %}">WEBDELMIRA</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse" id="navbarNav" style="flex-direction: row;justify-content: flex-end;">
                 <ul class="navbar-nav">
                     {% if usuario_logado %}
                     <li class="nav-item">
