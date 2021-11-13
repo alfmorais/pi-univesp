@@ -1,19 +1,47 @@
 {% load static %}
 <!doctype html>
 <html lang="pt-BR">
-    <head>
-        <!-- Required meta tags -->
+    <head >
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+    <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">  
-        <link rel="stylesheet" href="{% static 'style.css' %}">
-        {% block 'head' %} {% endblock %}{% load static %}
-        <title>{% block 'titulo' %} {% endblock %}</title>
+    <!--===============================================================================================-->	
+	    <link rel="icon" type="image/png" href="{% static '/images/icons/favicon.ico'%}"/>
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'Fonts/font-awesome-4.7.0/css/font-awesome.min.css'%}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'Fonts/Linearicons-Free-v1.0.0/icon-font.min.css'%}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css'%}">
+    <!--===============================================================================================-->	
+        <link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css'%}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css'%}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css'%}">
+    <!--===============================================================================================-->	
+        <link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css'%}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'Css/dashboard.css'%}">
+    <!--===============================================================================================-->
+
+    {% block 'head' %} {% endblock %}
+    <title>{% block 'titulo' %} {% endblock %}</title>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="{% url 'home' %}">WEBDELMIRA</a>
+        <nav class="navbar navbar-expand-lg navbar-dark" class="header" style="background-color: #03989E;">
+            
+            <a href="{% url 'home' %}" style="padding-right: 30px;">
+                <img class="logo" src="{% static '/images/logo1.jpeg'%}">   
+            </a>
+            <label style="color: #afdadc;">
+                WEBDELMIRA
+            </label>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
