@@ -377,9 +377,99 @@ python manage.py makemigrations
 ~~~
 
 ## 9° Configurando a view da tela inicial
+
+O sistema web possui tela inicial que compoe o cadastro e login, a tela principal onde é listado todos os livros da biblioteca, tela de detalhe de cada livro onde é possivél verificar informações adicionais do livro e histórico de emprestimo e a tela de cadastro de emprestimo, livros e categorias.
+
+Todo a lógico do sistema é construido no arquivo views.py de cada aplicação Django. Dessa forma o Django permiter isolar e segregar cadas lógica em determinado uri. 
+
+Os seguintes passos descreve como cadastrar a tela inicial:
+
+1. Configuração do arquivo urls.py do projeto webib:
+
+~~~python
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('livro/', include('livro.urls')),
+    path('auth/', include('usuarios.urls')),
+]
+~~~
+
+no código: 
+~~~python
+    ...
+    path('auth/', include('usuarios.urls')),
+    ...
+~~~
+
+Está sendo a configuração da rota `auth/` e direcionando para a aplicação `usuarios`. 
+
+2. Configuração do arquivo urls.py da aplicação usuários:
+
+~~~python
+from django.urls import path
+from . import views
+
+
+urlpatterns = [
+    path('login/', views.login, name='login'),
+    path('cadastro/', views.cadastro, name='cadastro'),
+    path('valida_cadastro/', views.valida_cadastro, name='valida_cadastro'),
+    path('validar_login/', views.validar_login, name='validar_login'),
+    path('sair/', views.sair, name='sair'),
+]
+~~~
+
+no código: 
+~~~python
+    ...
+    path('cadastro/', views.cadastro, name='cadastro'),
+    ...
+~~~
+
+Está sendo configurado um complemento da uri de cadastro. No caso a url inteira será `auth/cadastro/`. 
+A lógica que estará no backend dessa url completa, será descrita no arquivo views.py da aplicação usuários. A função para acessar o código é cadastro, que está descrito na viaravel `views.cadastro`.
+
+3. Configuração do arquivo views.py da aplicação usuários:
+
+~~~python
+from hashlib import sha256
+
+from django.http import HttpResponse
+from django.shortcuts import redirect, render
+
+from .models import Usuarios
+
+...
+
+def cadastro(request):
+    if request.session.get('usuario'):
+        return redirect('/livro/home/')
+    
+    status = request.GET.get('status')
+    return render(request, 'cadastro.html', {'status': status})
+
+...
+~~~
+
+Na função cadastro recebe um request, que é um variavél que está no navegador que indica uma ação do usuário. O bloco `if` verifica se o usário está logado, caso positivo, a url irá redirecionar o usário para a tela de home. 
+
+Caso contrário o usuário será redirecionado para a tela de cadastro, que possui as funções de cadastro e login do usuário.
+
+Tela de Cadastro:
+
+![Text Alt](cadastro.png)
+
+Tela de Login:
+
+![Text Alt](login.png)
+
 ## 10° Inserindo o usuário na tela de Login
+
+
 ## 11° Após o login: Tela do Sistema!
-## 12°
 
 ## Referências
 1. [Documentação do Django](https://docs.djangoproject.com/pt-br/3.2/)
