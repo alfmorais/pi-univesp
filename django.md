@@ -458,6 +458,39 @@ Na função cadastro recebe um request, que é um variavél que está no navegad
 
 Caso contrário o usuário será redirecionado para a tela de cadastro, que possui as funções de cadastro e login do usuário.
 
+Todas essas situações problema são configuradas no arquivo views.py na função valida_cadastro. 
+
+~~~python
+def valida_cadastro(request):
+    nome = request.POST.get('nome')
+    senha = request.POST.get('senha')
+    email = request.POST.get('email')
+
+    usuario = Usuarios.objects.filter(email = email)
+
+    if len(nome.strip()) == 0 or len(email.strip()) == 0:
+        return redirect('/auth/cadastro/?status=1')
+
+    if len(senha) < 8:
+        return redirect('/auth/cadastro/?status=2')
+
+    if len(usuario) > 0:
+        return redirect('/auth/cadatro/?status=3')
+
+    try:
+        senha = sha256(senha.encode()).hexdigest()
+        usuario = Usuarios(
+            nome=nome,
+            email=email,
+            senha=senha,
+        )
+        usuario.save()
+
+        return redirect('/auth/cadastro/?status=0')
+    except:
+        return redirect('/auth/cadastro/?status=4')
+~~~
+
 Tela de Cadastro:
 
 ![Text Alt](cadastro.png)
@@ -468,14 +501,75 @@ Tela de Login:
 
 ## 10° Inserindo o usuário na tela de Login
 
+Conforme o passo 9º o processo continua o mesmo. Isso porque o Framework Django trabalha com a metodologia de MVT (model, view e template). A imagem abaixo ilustra o processo de acesso a informação de acordo com a metodologia MVT. 
+
+![Text Alt](mvt.png)
+
+Para cadastrar o login do usuário, devemos receber os dados via uma formulário HTML e fazer toda a lógica do sistema para gerenciamento de login. 
+
+Rota para configurar o login:
+
+~~~url
+http://127.0.0.1:8000/auth/login/
+~~~
+
+A uri: `/auth/login/`. 
+
+1. Configurando o arquivo urls.py da aplicação usários:
+
+~~~python
+from django.urls import path
+from . import views
+
+
+urlpatterns = [
+    path('login/', views.login, name='login'),
+    path('cadastro/', views.cadastro, name='cadastro'),
+    path('valida_cadastro/', views.valida_cadastro, name='valida_cadastro'),
+    path('validar_login/', views.validar_login, name='validar_login'),
+    path('sair/', views.sair, name='sair'),
+]
+~~~
+
+O código responsável por essa uri: 
+
+~~~python
+...
+path('login/', views.login, name='login'),
+...
+~~~
+
+2. Validando o login: 
+
+~~~python
+def validar_login(request):
+    email = request.POST.get('email')
+    senha = request.POST.get('senha')
+
+    senha = sha256(senha.encode()).hexdigest()
+
+    usuario = Usuarios.objects.filter(email=email).filter(senha=senha)
+
+    if len(usuario) == 0:
+        return redirect('/auth/login/?status=1')
+    elif len(usuario) > 0:
+        request.session['usuario'] = usuario[0].id
+        return redirect(f'/livro/home/')
+
+    return HttpResponse(f"{email} {senha}")
+~~~
+
+o código acima serve como validador dos dados recebidos do formulário HTML via método HTTP verbo POST. A função verifica se o usuário está cadastrado no banco de dados e caso positivo libera o acesso para o sistema. Caso o contrário a função redireciona o sistema para a tela de login. 
 
 ## 11° Após o login: Tela do Sistema!
+
+![Text Alt](home.png)
 
 ## Referências
 1. [Documentação do Django](https://docs.djangoproject.com/pt-br/3.2/)
 2. [Integrando Django com PostgreSQL ( Windows e Linux )](https://www.horadecodar.com.br/2019/01/24/integrando-django-com-postegresql-windows-e-linux/)
 3. [Integrating Django with a legacy database](https://docs.djangoproject.com/en/3.2/howto/legacy-databases/)
-4. []()
+4. [The MVT Design Pattern of Django](https://python.plainenglish.io/the-mvt-design-pattern-of-django-8fd47c61f582)
 5. []()
 6. []()
 7. []()
