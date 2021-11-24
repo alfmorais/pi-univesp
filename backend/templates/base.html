@@ -72,17 +72,12 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <button style="margin-left: 15px;" onclick="mostrar_form(1)" class="btn btn-info">Categoria</button>
-                    <button style="margin-left: 15px;" onclick="mostrar_form(2)" class="btn btn-info">Livro</button>
-                    <button style="margin-left: 15px;" onclick="mostrar_form(3)" class="btn btn-info">Emprestimos</button>
+                    <button style="margin-left: 15px;" onclick="mostrar_form(1)" class="btn btn-info"  style="background-color: #03989E; border-color: #03989e8f;">Categoria</button>
+                    <button style="margin-left: 15px;" onclick="mostrar_form(2)" class="btn btn-info"  style="background-color: #03989E; border-color: #03989e8f;">Livro</button>
+                    <button style="margin-left: 15px;" onclick="mostrar_form(3)" class="btn btn-info"  style="background-color: #03989E; border-color: #03989e8f;">Emprestimos</button>
                     <br>
                         <div style="display: none;" id="livro">
                             <br>
-                            <div class="container-login100-form-btn">
-                                <button class="login100-form-btn">
-                                    Login
-                                </button>
-                            </div>
                             <form action="{% url 'cadastrar' %}" method="POST">
                                 {% csrf_token %}
                                 <table>
