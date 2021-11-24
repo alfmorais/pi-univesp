@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block 'head' %} 
 {% endblock %}
 
 {% block 'titulo' %}Login{% endblock %}
 
 {% block 'body' %}
-<div class="container">
     <br>
     {% if status == '1' %}
         <div class="alert alert-danger" role="alert">
@@ -18,25 +17,52 @@
             Usuário não está autenticado. Por favor, faça o login.
         </div>
     {% endif %}
-    <div class="row">
-        <div class="col-md-3">
-        </div>
-        <div class="col-md">
-            <h1>Login do Usuário</h1>
-            <hr>
-            <form method="POST" action="{% url 'validar_login' %}">{% csrf_token %}
-                <label>Email</label>
-                <input name="email" class="form-control" type="email" placeholder="Email">
-                <br>
-                <label>Senha</label>
-                <input name="senha" class="form-control" type="password" placeholder="Senha">
-                <br>
-                <input class="btn btn-info btn-lg" type="submit" value="Enviar">
-                <a href="{% url 'cadastro' %}" class="btn btn-warning btn-lg">Cadastro</a>
-            </form>
-        </div>
-        <div class="col-md-3">
-        </div>
-    </div>
-</div>
+    <div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-more" style="background-image: url({% static '/images/bg-01.jpeg'%});">
+				</div>
+				<div class="login100-form-div">
+					<div class="login100-form-top">
+						<label class="login100-form-title p-b-40" style="padding-right: 50px;">
+							<a href="#" style="padding-right: 30px;">
+								<img class="logo" src="{% static '/images/logo1.jpeg'%}" alt="Colorlib logo">
+							</a>
+							Projeto Integrador
+						</label>
+					</div>
+					<form class="login100-form validate-form" method="POST" action="{% url 'validar_login' %}">{% csrf_token %}
+						<label class="login100-form-title p-b-42">Login</label>
+						<div class="wrap-input100 validate-input" data-validate = "Favor digitar um email valido">
+							<input class="input100" type="text" name="email">
+							<span class="focus-input100"></span>
+							<span class="label-input100">Email</span>
+						</div>
+
+
+						<div class="wrap-input100 validate-input" data-validate="Por favor Digitar sua senha">
+							<input class="input100" type="password"  name="senha">
+							<span class="focus-input100"></span>
+							<span class="label-input100">Senha</span>
+						</div>
+
+						<div class="flex-sb-m w-full p-t-3 p-b-32">
+
+							<div>
+								<a href="#" class="txt1">
+									Esqueci a Senha
+								</a>
+							</div>
+						</div>
+					
+
+						<div class="container-login100-form-btn">
+                            <input class="login100-form-btn" type="submit" value="Enviar">
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}
