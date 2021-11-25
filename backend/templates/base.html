@@ -72,9 +72,60 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <button style="margin-left: 15px;" onclick="mostrar_form(1)" class="btn btn-info"  style="background-color: #03989E; border-color: #03989e8f;">Categoria</button>
-                    <button style="margin-left: 15px;" onclick="mostrar_form(2)" class="btn btn-info"  style="background-color: #03989E; border-color: #03989e8f;">Livro</button>
-                    <button style="margin-left: 15px;" onclick="mostrar_form(3)" class="btn btn-info"  style="background-color: #03989E; border-color: #03989e8f;">Emprestimos</button>
+                    <button style="margin-left: 10px;" onclick="mostrar_form(1)" class="btn btn-info" >Categoria</button>
+                    <button style="margin-left: 10px;" onclick="mostrar_form(2)" class="btn btn-info">Livro</button>
+                    <button style="margin-left: 10px;" onclick="mostrar_form(3)" class="btn btn-info">Emprestimo</button>
+                    <br>
+                    <hr>
+                    <div style="display: none;" id="livro">
+                        <form action="{% url 'cadastrar' %}" method="POST">
+                            {% csrf_token %}
+                            <table>
+                                {{form.as_table}}
+                            </table>
+                            <input type="submit" class="btn btn-info" value="Cadastrar">
+                        </form>
+                    </div>
+                    <div style="display: none;" id="categoria">
+                        <form action="{% url 'cadastrar_categoria' %}" method="POST">{% csrf_token %}
+                            <table>
+                                {{form_categoria.as_table}}
+                            </table>
+                            <input type="hidden" name="usuario" value="{{usuario_logado}}">
+                            <input class="btn btn-info" type="submit" value="Enviar">
+                        </form>
+                    </div>
+                    <div style="display: none;" id="emprestimos">
+                        <!--
+                        <button onclick="exibe_input_emprestado(1)" class="btn btn-info">Usuário novo</button>
+                        <button onclick="exibe_input_emprestado(2)" class="btn btn-info" >Usuario existente</button>
+                        -->
+                        <br>
+                        <br>
+                        <form id="form_emprestimo" action="{% url 'cadastrar_emprestimo' %}" method="POST">{% csrf_token %}
+                            <select class="form-control" name="usuarios">
+                                {% for usuario in usuarios %}
+                                    <option value="{{usuario.id}}">{{usuario.nome}}</option>
+                                {% endfor %}
+                                <br>
+                            </select>
+                            <br>
+                            <select class="form-control" name="livro_emprestado">
+                                {% for livro in livros %}
+                                    <option value="{{livro.id}}">{{livro.nome}}</option>
+                                {% endfor %}
+                                <br>
+                            </select>
+                            <br>
+                            <input type="submit" value="Emprestar" class="btn btn-info">
+                        </form>
+                    </div>
+                </div>
+                <!--
+                <div class="modal-body">
+                    <button style="margin-left: 15px;" onclick="mostrar_form(1)" class="btn btn-info">Categoria</button>
+                    <button style="margin-left: 15px;" onclick="mostrar_form(2)" class="btn btn-info">Livro</button>
+                    <button style="margin-left: 15px;" onclick="mostrar_form(3)" class="btn btn-info">Emprestimos</button>
                     <br>
                         <div style="display: none;" id="livro">
                             <br>
@@ -84,6 +135,7 @@
                                     {{form_livro.as_table}}
                                 </table>
                                 <br>
+                                <input type="hidden" name="usuario" value="{{usuario_logado}}">
                                 <input type="submit" class="btn btn-success" value="Cadastrar Livro">
                             </form>
                         </div>
@@ -95,6 +147,7 @@
                                     {{form_emprestimo.as_table}}
                                 </table>
                                 <br>
+                                <input type="hidden" name="usuario" value="{{usuario_logado}}">
                                 <input type="submit" class="btn btn-success" value="Cadastrar Emprestimo">
                             </form>
                         </div>
@@ -105,11 +158,12 @@
                                 <table>
                                     {{form_categoria.as_table}}
                                 </table>
-                                <br>
-                                <input type="submit" class="btn btn-success" value="Cadastrar Categoria">
+                                <input type="hidden" name="usuario" value="{{usuario_logado}}">
+                                <input class="btn btn-success" type="submit" value="Cadastrar Categoria">
                             </form>
                         </div>
                 </div>
+            -->
             </div>
             </div>
         {% endif %}
@@ -123,21 +177,17 @@
                 categoria.style.display = 'block';
                 livro.style.display = 'none';
                 emprestimo.style.display = 'none';
-
             }else if(v1 == 2){
                 livro.style.display = 'block';
                 categoria.style.display = 'none';
                 emprestimo.style.display = 'none';
-
             }else if(v1 == 3){
                 emprestimo.style.display = 'block';
                 categoria.style.display = 'none';
                 livro.style.display = 'none';
             }
             }
-
             function exibe_input_emprestado(v1){
-
             if(v1 == 1){
                 document.getElementById('nome_emprestado').style.display = "none"
                 document.getElementById('nome_emprestado_anonimo').style.display = "block"
@@ -149,7 +199,7 @@
                 document.getElementById('nome_emprestado').style.display = "block"
                 document.getElementById('nome_emprestado_anonimo').style.display = "none"
             }
-            }
+                }
         </script>
     </body>
 </html>

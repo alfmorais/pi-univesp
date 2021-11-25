@@ -10,6 +10,7 @@ from .forms import CadastroLivro, EmprestimoLivro, CategoriaLivro
 def home(request):
     if request.session.get('usuario'):
         usuario = Usuarios.objects.get(id=request.session['usuario'])
+        status_categoria = request.GET.get('cadastro_categoria')
         livros = Livros.objects.all()
         form_livro = CadastroLivro()
         form_emprestimo = EmprestimoLivro()
@@ -20,6 +21,7 @@ def home(request):
             'form_livro': form_livro,
             'form_emprestimo': form_emprestimo,
             'form_categoria': form_categoria,
+            'status_categoria': status_categoria,
         })
     else:
         return redirect('/auth/login/?status=2')
@@ -47,7 +49,10 @@ def descricao(request, id):
 
 
 def cadastrar(request):
-    if request.method == "POST":
+    """
+    Função para cadastrar livros
+    """
+    if request.method == 'POST':
         form = CadastroLivro(request.POST)
         if form.is_valid():
             form.save()
@@ -67,14 +72,16 @@ def cadastrar_categoria(request):
     descricao = form.data['descricao']
     id_usuario = request.POST.get('usuario')
     if int(id_usuario) == int(request.session.get('usuario')):
-        user = Usuarios.objects.get()
+        user = Usuarios.objects.get(id=id_usuario)
         categoria = Categoria(
             nome=nome, 
             descricao=descricao, 
             usuario=user, 
         )
         categoria.save()
-        return redirect('/livro/home?cadastro_categoria=1')
+        return redirect('/livro/home?cadastro_categoria=1', {
+            'usuario_logado': request.session.get('usuario'),
+        })
     else:
         return HttpResponse('Pare de ser um usuário malandrinho. Não foi desta vez.')
 
@@ -101,5 +108,9 @@ def cadastrar_emprestimo(request):
         livro.emprestado = True
         livro.save()
 
+        return redirect('/livro/home/', {
+            'usuario': Usuarios.objects.get(),
+            'livro': Livros.objects.get(),
+        })
 
         return HttpResponse('Emprestimo realizado com sucesso')
