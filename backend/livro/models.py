@@ -2,11 +2,11 @@ from django.db import models
 from django.db.models.deletion import DO_NOTHING
 from django.db.models.fields.related import ForeignKey
 from usuarios.models import Usuarios
-
+#from categorias.models import Categoria
 
 class Categoria(models.Model):
     nome = models.CharField(max_length=128)
-    descricao = models.TextField()
+    descricao = models.CharField(max_length=128)
     usuario = models.ForeignKey(Usuarios, on_delete=models.DO_NOTHING, default=None)
     
     
@@ -17,6 +17,7 @@ class Categoria(models.Model):
     class Meta:
         verbose_name = 'Categoria'
         verbose_name_plural = 'Categorias'
+
 
 
 class Livros(models.Model):
