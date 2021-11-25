@@ -3208,7 +3208,7 @@
   /*==================================================================
   [ login more ]*/
   .login100-more {
-    background-image: url("/static/images/bg-01.png");
+    background-image: url("../static/images/bg-01.png");
     width: calc(45% + 187px);
     background-repeat: no-repeat;
     background-size: cover;

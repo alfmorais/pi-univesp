@@ -129,11 +129,6 @@
                     <br>
                         <div style="display: none;" id="livro">
                             <br>
-                            <div class="container-login100-form-btn">
-                                <button class="login100-form-btn">
-                                    Login
-                                </button>
-                            </div>
                             <form action="{% url 'cadastrar' %}" method="POST">
                                 {% csrf_token %}
                                 <table>
