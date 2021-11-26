@@ -39,9 +39,6 @@
             <a href="{% url 'home' %}" style="padding-right: 30px;">
                 <img class="logo" src="{% static '/images/logo2.jpeg'%}">   
             </a>
-            <label style="color: #afdadc;">
-                WEBDELMIRA
-            </label>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -66,16 +63,18 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Cadastrar Livro</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Cadastrar</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
 
                 <div class="modal-body">
-                    <button style="margin-left: 15px;" onclick="mostrar_form(1)" class="btn btn-info">Categoria</button>
-                    <button style="margin-left: 15px;" onclick="mostrar_form(2)" class="btn btn-info">Livro</button>
-                    <button style="margin-left: 15px;" onclick="mostrar_form(3)" class="btn btn-info">Emprestimos</button>
+                    <center>
+                        <button style="margin-left: 15px;background-color: #03989E;" onclick="mostrar_form(1)" class="btn btn-info">Categoria</button>
+                        <button style="margin-left: 15px;background-color: #03989E;" onclick="mostrar_form(2)" class="btn btn-info">Livro</button>
+                        <button style="margin-left: 15px;background-color: #03989E;" onclick="mostrar_form(3)" class="btn btn-info">Emprestimos</button>
+                    </center>
                     <br>
                         <div style="display: none;" id="livro">
                             <br>
@@ -86,7 +85,7 @@
                                 </table>
                                 <br>
                                 <input type="hidden" name="usuario" value="{{usuario_logado}}">
-                                <center><input type="submit" class="btn btn-success" value="Cadastrar Livro"></center>
+                                <center><input type="submit" class="btn btn-info btn-lg"  style="background-color: #2a575e;" value="Cadastrar Livro"></center>
                             </form>
                         </div>
                         <div style="display: none;" id="emprestimo">
@@ -98,7 +97,7 @@
                                 </table>
                                 <br>
                                 <input type="hidden" name="usuario" value="{{usuario_logado}}">
-                                <center><input type="submit" class="btn btn-success" value="Cadastrar Emprestimo"></center>
+                                <center><input type="submit" class="btn btn-info btn-lg"  style="background-color: #2a575e;"  value="Cadastrar Emprestimo"></center>
                             </form>
                         </div>
                         <div style="display: none;" id="categoria">
@@ -110,7 +109,7 @@
                                 </table>
                                 <br>
                                 <input type="hidden" name="usuario" value="{{usuario_logado}}">
-                                <center><input class="btn btn-success" type="submit" value="Cadastrar Categoria"></center>
+                                <center><input class="btn btn-info btn-lg" type="submit" style="background-color: #2a575e;" value="Cadastrar Categoria"></center>
                             </form>
                         </div>
                 </div>

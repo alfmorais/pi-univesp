@@ -3022,8 +3022,7 @@
   [ RESTYLE TAG ]*/
   
   * {
-      margin: 0px; 
-      padding: 1px; 
+      margin: 0px;  
       box-sizing: border-box;
   }
   
@@ -3077,7 +3076,13 @@
   /*---------------------------------------------*/
   input {
     outline: none;
+    width: 290px;
   }
+  select {
+    text-transform: none;
+    width: 290px;
+  }
+  
   
   textarea {
     outline: none;
