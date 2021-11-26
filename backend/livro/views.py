@@ -1,3 +1,4 @@
+import datetime
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from usuarios.models import Usuarios
@@ -89,28 +90,25 @@ def cadastrar_categoria(request):
 def cadastrar_emprestimo(request):
     if request.method == 'POST':
         nome_emprestado = request.POST.get('nome_emprestado')
-        nome_emprestado_anonimo = request.POST.get('nome_emprestado_anonimo')
-        livro_emprestado = request.POST.get('livro_emprestado')
+        usuario = Usuarios.objects.get(id=nome_emprestado)
         
-        if nome_emprestado_anonimo:
-            emprestimo = Emprestimos(
-                nome_emprestado_anonimo=nome_emprestado_anonimo,
-                livro_id = livro_emprestado
-            )
-        else:
-            emprestimo = Emprestimos(
-                nome_emprestado_id=nome_emprestado,
-                livro_id = livro_emprestado
-            )
-        emprestimo.save()
-
+        data_emprestimo = request.POST.get('data_emprestimo')
+        data_devolucao = request.POST.get('data_devolucao')
+        tempo_duracao = request.POST.get('tempo_duracao')
+        livro_emprestado = request.POST.get('livro')
+        
         livro = Livros.objects.get(id=livro_emprestado)
         livro.emprestado = True
         livro.save()
+        
+        
+        Emprestimos(
+            nome_emprestado=usuario,
+            data_emprestimo=data_emprestimo,
+            data_devolucao=data_devolucao,
+            tempo_duracao=tempo_duracao,
+            livro=livro,
+        ).save()
+        
+        return redirect('/livro/home')
 
-        return redirect('/livro/home/', {
-            'usuario': Usuarios.objects.get(),
-            'livro': Livros.objects.get(),
-        })
-
-        return HttpResponse('Emprestimo realizado com sucesso')
