@@ -21,13 +21,13 @@ class Migration(migrations.Migration):
                 ('data_cadastro', models.DateTimeField(auto_now_add=True)),
                 ('emprestado', models.BooleanField(default=False)),
                 ('quantidade', models.PositiveIntegerField()),
-                ('partimonio', models.CharField(max_length=32)),
+                ('patrimonio', models.CharField(max_length=32)),
                 ('ativo', models.BooleanField()),
             ],
             options={
                 'verbose_name': 'Livro',
                 'verbose_name_plural': 'Livros',
-                'db_table': 'Tabela do Livro',
+                'db_table': 'livro_cadastro',
             },
         ),
     ]

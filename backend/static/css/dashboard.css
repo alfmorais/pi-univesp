@@ -3023,7 +3023,7 @@
   
   * {
       margin: 0px; 
-      padding: 0px; 
+      padding: 1px; 
       box-sizing: border-box;
   }
   
@@ -3076,13 +3076,11 @@
   
   /*---------------------------------------------*/
   input {
-      outline: none;
-      border: none;
+    outline: none;
   }
   
   textarea {
     outline: none;
-    border: none;
   }
   
   textarea:focus, input:focus {

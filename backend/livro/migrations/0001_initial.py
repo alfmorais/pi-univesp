@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'Livro',
                 'verbose_name_plural': 'Livros',
-                'db_table': 'Tabela do Livro',
+                'db_table': 'livro_cadastro',
             },
         ),
     ]

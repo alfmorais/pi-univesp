@@ -11,7 +11,7 @@ class CadastroLivro(forms.ModelForm):
             "editora",
             "emprestado",
             "quantidade",
-            "partimonio",
+            "patrimonio",
             "ativo",
             "categoria",
             "usuarios",

@@ -74,7 +74,7 @@ CREATE TABLE tb_livro (
 	lvr_gen_id INT4 NULL,	
 	lvr_autor TEXT NULL,
 	lvr_qnt TEXT NULL,
-	lvr_partimonio INT4 NULL,
+	lvr_patrimonio INT4 NULL,
 	lvr_doacao INT4  NULL, 
     lvr_dtcastro TIMESTAMP NOT NULL , 
     lvr_par_id INT4 NOT NULL,

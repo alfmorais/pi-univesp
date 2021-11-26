@@ -28,7 +28,7 @@ class Livros(models.Model):
     data_cadastro = models.DateTimeField(auto_now_add=True)
     emprestado = models.BooleanField(default=False)
     quantidade = models.PositiveIntegerField()
-    partimonio = models.CharField(max_length=32)
+    patrimonio = models.CharField(max_length=32)
     ativo = models.BooleanField()
     categoria = models.ForeignKey(Categoria, models.DO_NOTHING, default=None)
     usuarios = models.ForeignKey(Usuarios, on_delete=DO_NOTHING, default=None)
@@ -39,7 +39,7 @@ class Livros(models.Model):
 
 
     class Meta:
-        db_table = 'Tabela do Livro'
+        db_table = 'livro_cadastro'
         verbose_name = 'Livro'
         verbose_name_plural = 'Livros'
 

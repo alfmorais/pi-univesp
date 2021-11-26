@@ -196,7 +196,7 @@ CREATE TABLE tb_livro (
 	lvr_gen_id INT4 NULL,	
 	lvr_autor TEXT NULL,
 	lvr_qnt TEXT NULL,
-	lvr_partimonio INT4 NULL,
+	lvr_patrimonio INT4 NULL,
 	lvr_doacao INT4  NULL, 
     lvr_dtcastro TIMESTAMP NOT NULL , 
     lvr_par_id INT4 NOT NULL,
@@ -327,7 +327,7 @@ class TbLivro(models.Model):
     lvr_gen = models.ForeignKey(TbGenero, models.DO_NOTHING, blank=True, null=True)
     lvr_autor = models.TextField(blank=True, null=True)
     lvr_qnt = models.TextField(blank=True, null=True)
-    lvr_partimonio = models.IntegerField(blank=True, null=True)
+    lvr_patrimonio = models.IntegerField(blank=True, null=True)
     lvr_doacao = models.IntegerField(blank=True, null=True)
     lvr_dtcastro = models.DateTimeField()
     lvr_par = models.ForeignKey('TbParteleira', models.DO_NOTHING)

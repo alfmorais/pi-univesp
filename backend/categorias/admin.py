@@ -13,7 +13,7 @@ class LivrosAdmin(admin.ModelAdmin):
         'data_cadastro',
         'emprestado',
         'quantidade',
-        'partimonio',
+        'patrimonio',
         'ativo',
     ]
 
